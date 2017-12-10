@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Link
 } from 'react-router-dom';
 import './App.css';
 import GamePage from '../GamePage/GamePage';
@@ -35,8 +36,8 @@ class App extends Component {
             <Route exact path='/game' render={() =>
               <GamePage
                 game={this.state.games}
-              />
-            }/>
+                />
+              }/>
           </Switch>
         </Router>
       </div>
