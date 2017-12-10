@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/game-discovery');
+mongoose.connect(process.env.DATABASE_URL);
 
 const db = mongoose.connection;
 
