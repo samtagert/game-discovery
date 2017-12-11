@@ -5,10 +5,16 @@ import NavBar from '../../components/NavBar/NavBar';
 
 const WelcomePage = (props) => {
   return (
-    <NavBar
-      user={props.user}
-      handleLogout={props.handleLogout}
-    />
+    <div>
+      <NavBar
+        user={props.user}
+        handleLogout={props.handleLogout}
+      />
+      <br></br>WelcomePage<br></br><br></br>
+      <Link to='/'>Welcome</Link><br></br>
+      <Link to='/games'>Games</Link><br></br>
+      <Link to='/game'>Game</Link><br></br><br></br>
+    </div>
   )
 }
 

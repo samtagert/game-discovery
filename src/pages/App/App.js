@@ -19,7 +19,6 @@ class App extends Component {
       games: null
     }
   }
-
   
   handleSignup = () => {
     this.setState({user: userService.getUser()});
@@ -37,8 +36,10 @@ class App extends Component {
   componentDidMount() {
     let user = userService.getUser();
     this.setState({user})
+    fetch('/games').then(data => data.json())
+    .then(data => this.setState({games: data.body}))
   }
-  
+
   render() {
     return (
       <div>
@@ -52,14 +53,17 @@ class App extends Component {
             }/>
             <Route exact path='/games' render={() =>
               <GamesPage
+                user={this.state.user}
                 games={this.state.games}
+                handleLogout={this.handleLogout}
               />
             }/>
             <Route exact path='/game' render={() =>
               <GamePage
-                game={this.state.games}
-                />
-              }/>
+                user={this.state.user}
+                handleLogout={this.handleLogout}
+              />
+            }/>
             <Route exact path='/signup' render={(props) => 
               <SignupPage
                 {...props}
@@ -80,16 +84,3 @@ class App extends Component {
 }
 
 export default App;
-
-// REQUEST URL https://api-2445582011268.apicast.io
-// APP NAME Sam Tagert's App
-// KEY 94cc26f4fbabc150854051ac9194ed3e
-// Add this as a user-key parameter to your API calls to authenticate.
-
-// Headers
-// Key       Value
-// user-key  Your Key
-// Accept    application/json
-
-// https://api-2445582011268.apicast.io/genres/?fields=*&filter[slug][eq]=point-and-click
-// https://api-2445582011268.apicast.io/games/?filter[rating][gt]=99
