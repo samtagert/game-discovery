@@ -1,15 +1,15 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-// import {Navbar, NavItem} from 'react-materialize'
+import {Navbar, NavItem} from 'react-materialize'
 import './NavBar.css';
 
 const NavBar = (props) => {
   let nav = props.user ?
   <div>
-    {/* <Navbar brand='logo' right>
+    <Navbar brand='logo' right>
       <NavItem href='get-started.html'>Getting started</NavItem>
       <NavItem href='components.html'>Components</NavItem>
-    </Navbar> */}
+    </Navbar>
     <Link to='/' className='NavBar-link' >PROFILE</Link>
     &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <Link to='' className='NavBar-link' onClick={props.handleLogout} >LOG OUT</Link>

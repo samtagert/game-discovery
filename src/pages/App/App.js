@@ -16,7 +16,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      games: null
+      banana: null
     }
   }
   
@@ -36,8 +36,6 @@ class App extends Component {
   componentDidMount() {
     let user = userService.getUser();
     this.setState({user})
-    fetch('/games').then(data => data.json())
-    .then(data => this.setState({games: data.body}))
   }
 
   render() {
@@ -54,11 +52,10 @@ class App extends Component {
             <Route exact path='/games' render={() =>
               <GamesPage
                 user={this.state.user}
-                games={this.state.games}
                 handleLogout={this.handleLogout}
               />
             }/>
-            <Route exact path='/game' render={() =>
+            <Route exact path='/game/:id' render={() =>
               <GamePage
                 user={this.state.user}
                 handleLogout={this.handleLogout}
