@@ -6,10 +6,6 @@ import NavBar from '../../components/NavBar/NavBar';
 const GamePage = (props) => {
   return (
     <div>
-      <NavBar
-        user={props.user}
-        handleLogout={props.handleLogout}
-      />
       <br></br>GamePage<br></br><br></br>
       <Link to='/'>Welcome</Link><br></br>
       <Link to='/games'>Games</Link><br></br>

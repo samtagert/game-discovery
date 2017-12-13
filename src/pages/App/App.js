@@ -5,12 +5,14 @@ import {
   Route
 } from 'react-router-dom';
 import './App.css';
+
 import GamePage from '../GamePage/GamePage';
 import GamesPage from '../GamesPage/GamesPage';
 import WelcomePage from '../WelcomePage/WelcomePage';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
+import NavBar from '../../components/NavBar/NavBar';
 
 class App extends Component {
   constructor(props) {
@@ -42,38 +44,47 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <Switch>
-            <Route exact path='/' render={() =>
-              <WelcomePage
+          <div>
+            <div>
+              <NavBar
                 user={this.state.user}
                 handleLogout={this.handleLogout}
               />
-            }/>
-            <Route exact path='/games' render={() =>
-              <GamesPage
-                user={this.state.user}
-                handleLogout={this.handleLogout}
-              />
-            }/>
-            <Route exact path='/game/:id' render={() =>
-              <GamePage
-                user={this.state.user}
-                handleLogout={this.handleLogout}
-              />
-            }/>
-            <Route exact path='/signup' render={(props) => 
-              <SignupPage
-                {...props}
-                handleSignup={this.handleSignup}
-              />
-            }/>
-            <Route exact path='/login' render={(props) => 
-              <LoginPage
-                {...props}
-                handleLogin={this.handleLogin}
-              />
-            }/>
-          </Switch>
+            </div>
+            <Switch>
+              <Route exact path='/' render={() =>
+                <WelcomePage
+                  user={this.state.user}
+                  handleLogout={this.handleLogout}
+                />
+              }/>
+              <Route exact path='/games' render={() =>
+                <GamesPage
+                  user={this.state.user}
+                  handleLogout={this.handleLogout}
+                />
+              }/>
+              <Route exact path='/games/:id' render={(props) =>
+                <GamePage
+                  {...props}
+                  user={this.state.user}
+                  handleLogout={this.handleLogout}
+                />
+              }/>
+              <Route exact path='/signup' render={(props) => 
+                <SignupPage
+                  {...props}
+                  handleSignup={this.handleSignup}
+                />
+              }/>
+              <Route exact path='/login' render={(props) => 
+                <LoginPage
+                  {...props}
+                  handleLogin={this.handleLogin}
+                />
+              }/>
+            </Switch>
+          </div>
         </Router>
       </div>
     );
