@@ -13,7 +13,6 @@ var Game = require('../models/game')
 // after initial search, the text changes to "Narrow your discovery even more?" and "Make a new discovery!" wiped out current list and brings you to original
 // Narrow your disc even more filters through the list of games you have, does not make a new fetch request
 function index(req, res) {
-  console.log('req =', req.body)
     client.games({
       filters: {
         'release_dates.platform-in': req.body.platforms,
@@ -21,7 +20,7 @@ function index(req, res) {
         'rating-gte': req.body.rating
       },
       fields: '*',
-      limit: 5
+      limit: 12
     })
     .then((igdbResponse) => {
       res.json(igdbResponse.body)
@@ -29,6 +28,23 @@ function index(req, res) {
     .catch(error => {
       throw error;
     });
+}
+
+function show(req, res) {
+  client.games({
+    ids: [
+        req.params.id
+    ]
+}, [
+    'name',
+    'cover'
+])
+  .then((igdbResponse) => {
+    res.json(igdbResponse.body)
+  })
+  .catch(error => {
+    throw error
+  })
 }
 
 // separate function for when you click a specific tag while on a game show page
@@ -43,6 +59,7 @@ function removeGame(req, res) {
 
 module.exports = {
   index,
+  show,
   addGame,
   removeGame
 }

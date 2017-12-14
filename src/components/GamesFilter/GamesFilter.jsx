@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Row, Input, Button, Card, CardTitle, Col} from 'react-materialize'
+import { Link } from 'react-router-dom'
+import {Row, Input, Button, Col, Collection, CollectionItem} from 'react-materialize'
 
 class GamesFilter extends Component {
   constructor(props) {
@@ -20,11 +21,7 @@ class GamesFilter extends Component {
     
   firstGamesSearch = () => {
     return this.state.games.map((game, gameIdx) =>
-      <Card className='small'
-        header={<CardTitle image='img/sample-1.jpg'>Card Title</CardTitle>}
-        actions={[<a href='#'>This is a Link</a>]}>
-      </Card>)
-    // <li key={gameIdx}>GAME: {game.name}...RATING: {game.total_rating}</li>)
+      <CollectionItem key={gameIdx} href="#"><img src={game.cover.url}></img><Link to={`/games/${game.id}`}>{game.name}</Link></CollectionItem>) 
   }
 
   filterGames = (field, input) => {
@@ -74,7 +71,6 @@ class GamesFilter extends Component {
 
 
   render() {
-    console.log(this.state.games)
     return (
       <div>
         <form onSubmit={this.handleSearch}>
@@ -102,17 +98,11 @@ class GamesFilter extends Component {
         // genre tags that live change your current list, does not make a fetch request
         <div>
           {this.state.games ?
-          <Row>
-          <Col s={3}>
+          <Collection>
           {this.firstGamesSearch()}
-          </Col>
-          </Row>
+          </Collection>
           :
           <h2>LOADING</h2>}
-          <Row>
-          <Col s={3}>
-          </Col>
-          </Row>
         </div>
       </div>
     );
