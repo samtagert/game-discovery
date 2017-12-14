@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom'
-import {Row, Input, Button, Card, CardTitle, Col, Collection, CollectionItem, Carousel} from 'react-materialize'
+import {Row, Col} from 'react-materialize'
 
 class GameShow extends Component {
   constructor(props) {
@@ -20,7 +19,15 @@ class GameShow extends Component {
     console.log(this.state.game)
     return (
       <div>
-        {this.state.game ? <div><h2>{this.state.game[0].name}</h2><p>{this.state.game[0].id}</p></div> : <h2>LOADING</h2>}
+        {this.state.game ?
+        <div><h3>{this.state.game[0].name}</h3>
+        <h4>{this.state.game[0].total_rating}</h4>
+        <Row>
+          <Col m={9} s={12}>
+            <p>{this.state.game[0].summary}</p>
+          </Col>
+        </Row></div>
+        : <h2>LOADING</h2>}
       </div>
     );
   }

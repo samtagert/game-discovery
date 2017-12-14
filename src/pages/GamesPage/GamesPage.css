@@ -1,0 +1,23 @@
+.games {
+  font-size: 24px;
+}
+
+.games-img {
+  border-radius: 1px;
+  border: 1px solid black;
+  height: 70px;
+}
+
+a {
+  color: inherit;
+}
+
+.games-page {
+  margin: 20px;
+}
+
+.discovery-form {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}

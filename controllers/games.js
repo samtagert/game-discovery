@@ -17,10 +17,10 @@ function index(req, res) {
       filters: {
         'release_dates.platform-in': req.body.platforms,
         'game_modes-in': req.body.gameModes,
-        'rating-gte': req.body.rating
+        'total_rating-gte': req.body.rating
       },
       fields: '*',
-      limit: 12
+      limit: 50
     })
     .then((igdbResponse) => {
       res.json(igdbResponse.body)
@@ -37,7 +37,8 @@ function show(req, res) {
     ]
 }, [
     'name',
-    'cover'
+    'summary',
+    'total_rating'
 ])
   .then((igdbResponse) => {
     res.json(igdbResponse.body)
