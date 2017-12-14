@@ -4,7 +4,8 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
   signup,
-  login
+  login,
+  profile
 };
 
 function signup(req, res) {
@@ -32,7 +33,9 @@ function login(req, res) {
   }).catch(err => res.status(401).json(err));
 }
 
-// Helper Functions
+function profile(req, res) {
+  console.log('banana profile')
+}
 
 function createJWT(user) {
   return jwt.sign(

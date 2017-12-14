@@ -2,10 +2,19 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt')
 const SALT_ROUNDS = 6
 
+
+var gameSchema = new mongoose.Schema({
+  igdbId: String,
+  name: String,
+  thumbnail: String
+})
+
+
 var userSchema = new mongoose.Schema({
   name: String,
   email: {type: String, required: true, lowercase: true, unique: true},
-  password: String
+  password: String,
+  discoveryList: [gameSchema]
 }, {
   timestamps: true
 });

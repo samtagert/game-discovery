@@ -1,8 +1,6 @@
-var Game = require('../models/game');
 var request = require('request')
 const igdb = require('igdb-api-node').default;
 const client = igdb(`${process.env.mashapeKey}`);
-var Game = require('../models/game')
 
 // when presenting and asked why you can't search for a specific game, it's because this is a
 // game FINDER, if you know what game you want to look at there's no reason to use this site
@@ -38,7 +36,8 @@ function show(req, res) {
 }, [
     'name',
     'summary',
-    'total_rating'
+    'total_rating',
+    'cover'
 ])
   .then((igdbResponse) => {
     res.json(igdbResponse.body)
@@ -51,7 +50,8 @@ function show(req, res) {
 // separate function for when you click a specific tag while on a game show page
 
 function addGame(req, res) {
-  console.log('addGame function')
+  console.log(req.body)
+  
 }
 
 function removeGame(req, res) {

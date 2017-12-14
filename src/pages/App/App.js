@@ -11,6 +11,7 @@ import GamesPage from '../GamesPage/GamesPage';
 import WelcomePage from '../WelcomePage/WelcomePage';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
+import UserPage from '../UserPage/UserPage';
 import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
 
@@ -81,6 +82,12 @@ class App extends Component {
                 <LoginPage
                   {...props}
                   handleLogin={this.handleLogin}
+                />
+              }/>
+              <Route exact path='/user' render={(props) => 
+                <UserPage
+                  {...props}
+                  user={this.state.user}
                 />
               }/>
             </Switch>
