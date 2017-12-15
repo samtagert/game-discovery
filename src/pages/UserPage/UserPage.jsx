@@ -1,10 +1,12 @@
 import React from 'react';
 import './UserPage.css';
+import UserShow from '../../components/UserShow/UserShow'
 
 const UserPage = (props) => {
   return (
     <div>
-      <h2>{props.user.name}</h2>
+      <p>banana</p>
+      <UserShow user={props.user}/>
     </div>
   )
 }

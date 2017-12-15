@@ -39,6 +39,16 @@ class App extends Component {
   componentDidMount() {
     let user = userService.getUser();
     this.setState({user})
+    // fetch('/api/users', {
+    //   headers: {
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: ({
+    //     id: '5a32c4fa2478eafbbb9c80ab'
+    //   })})
+    // .then(res => res.json())
+    // .then(user => this.setState({user}))
   }
 
   render() {

@@ -13,7 +13,7 @@ class GamesFilter extends Component {
   firstGamesSearch = () => {
     return this.state.games.map((game, gameIdx) =>
       <CollectionItem className="games" key={gameIdx} href="#">
-        {<img className="games-img" src={game.cover.url}></img> || "Oops"}
+        {game.cover ? <img className="games-img" src={game.cover.url}></img> : <span>No Image</span>}
         {/* some games don't have cover urls, make this if statement work */}
         <Link to={`/games/${game.id}`}> {game.name} | {Math.trunc(game.total_rating)}/100</Link>
       </CollectionItem>
