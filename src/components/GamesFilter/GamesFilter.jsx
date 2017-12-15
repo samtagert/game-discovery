@@ -10,15 +10,6 @@ class GamesFilter extends Component {
     };
   }
 
-  // this.setState({
-    // games: whatever is in search field...
-    // have a field to input an initial search, after loaded, have the filters below "filter these results by..."
-    // after that, you have the option to live filter the list by...
-    // tag, genre, rating, year, esrb, platforms, theme?
-    // each one updates your list of 50 but no more fetch requests
-    // button to discover different games (starts this over)
-    // });
-    
   firstGamesSearch = () => {
     return this.state.games.map((game, gameIdx) =>
       <CollectionItem className="games" key={gameIdx} href="#">
@@ -33,7 +24,6 @@ class GamesFilter extends Component {
   //   <li key={gameIdx}>GAME: {game.name}...RATING: {game.rating}</li>)
   // }
 
-  //make the search require at least one checkbox for each section be checked
   handleSearch = (event) => {
     event.preventDefault();  
     var gameModes = []

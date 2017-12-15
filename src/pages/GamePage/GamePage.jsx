@@ -5,7 +5,9 @@ import GameShow from '../../components/GameShow/GameShow'
 const GamePage = (props) => {
   return (
     <div>
-      <GameShow id={props.match.params.id}/>
+      <GameShow 
+      {...props}
+      id={props.match.params.id} user={props.user}/>
     </div>
   );
 }

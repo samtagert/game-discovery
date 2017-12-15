@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Switch, Route } from 'react-router-dom'
 import {Row, Col, Button} from 'react-materialize'
 
 class GameShow extends Component {
@@ -15,16 +15,18 @@ class GameShow extends Component {
     let igdbId = this.state.game[0].id
     let name = this.state.game[0].name
     let thumbnail = this.state.game[0].cover
+    let user = this.props.user
     fetch('/api/games/discover', {
       method: "POST",
-      body: JSON.stringify({igdbId, name, thumbnail}),
+      body: JSON.stringify({igdbId, name, thumbnail, user}),
       headers: {
         'Accept' : 'application/json',
         'Content-Type' : 'application/json'
       }
     })
+    .then(res => res.json())
+    .then(this.props.history.push('/'))
   }
-  
   componentDidMount() {
     fetch(`/api/games/${this.props.id}`)
     .then(res => res.json())
@@ -32,7 +34,6 @@ class GameShow extends Component {
   }
 
   render() {
-    console.log(this.state.game)
     return (
       <div>
         {this.state.game ?

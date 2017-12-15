@@ -1,6 +1,9 @@
 var request = require('request')
 const igdb = require('igdb-api-node').default;
 const client = igdb(`${process.env.mashapeKey}`);
+var User = require('../models/user')
+// require user model, find by id based on req.body.user
+// then do stuff
 
 // when presenting and asked why you can't search for a specific game, it's because this is a
 // game FINDER, if you know what game you want to look at there's no reason to use this site
@@ -50,8 +53,17 @@ function show(req, res) {
 // separate function for when you click a specific tag while on a game show page
 
 function addGame(req, res) {
-  console.log(req.body)
-  
+  User.findOne({_id: req.body.user._id}, (err, user) => {
+    if (!user.discoveryList.some(game => game.id === req.body.igdbId)) {
+      user.discoveryList.push({name: req.body.name, id: req.body.igdbId})
+      user.save((err, data) =>{
+        if (err) {
+          res.status(500).send(err)
+        }
+        res.status(200).send(data)
+      })
+    }
+  })
 }
 
 function removeGame(req, res) {
