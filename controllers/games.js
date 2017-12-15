@@ -58,9 +58,9 @@ function addGame(req, res) {
       user.discoveryList.push({name: req.body.name, id: req.body.igdbId})
       user.save((err, data) =>{
         if (err) {
-          res.status(500).send(err)
+          res.status(500).json(err)
         }
-        res.status(200).send(data)
+        res.status(200).json(data)
       })
     }
   })

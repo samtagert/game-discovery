@@ -34,17 +34,7 @@ function login(req, res) {
 }
 
 function profile(req, res) {
-  console.log('REQ BODY', req.body)
-  User.findById(req.body.id, (err, data) => {
-    if (err) {
-      res.status(500).send(err)
-    }
-    if (data) {
-      res.status(200).send(data)
-    } else {
-      res.status(404).send("No ID")
-    }
-  })
+  res.json(req.user.discoveryList)
 }
 
 function createJWT(user) {

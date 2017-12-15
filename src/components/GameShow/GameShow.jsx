@@ -27,6 +27,7 @@ class GameShow extends Component {
     .then(res => res.json())
     .then(this.props.history.push('/'))
   }
+  
   componentDidMount() {
     fetch(`/api/games/${this.props.id}`)
     .then(res => res.json())

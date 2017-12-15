@@ -1,11 +1,39 @@
-import React from 'react';
+import React, {Component} from 'react';
+import { Link } from 'react-router-dom'
+import {Row, Input, Button, Collection, CollectionItem} from 'react-materialize'
+import tokenService from '../../utils/tokenService'
 
-const NavBar = (props) => {
-  return (
-    <div>
-      {props.user.discoveryList[0]}
-    </div>
-  );
+class UserShow extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      discoveryList: null
+    };
+  }
+
+  componentDidMount() {
+    console.log(this.props.user)
+    fetch('/api/users/discoverylist', {
+      headers: {
+        'Accept' : 'application/json',
+        'Content-Type' : 'application/json',
+        'Authorization': 'Bearer ' + tokenService.getToken()
+      },
+    })
+    .then(res => res.json())
+    .then(discoveryList => this.setState({discoveryList}))
+    .catch(err => console.log('err =', err))
+  }
+      
+      
+  render() {
+    return (
+      <div>
+        {this.state.discoveryList ? <p>{this.state.discoveryList[0].name}</p>
+        : <h2>NO DISCOVERIES</h2>}
+      </div>
+    );
+  }
 };
 
-export default NavBar;
+export default UserShow;
