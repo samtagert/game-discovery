@@ -66,13 +66,8 @@ function addGame(req, res) {
   })
 }
 
-function removeGame(req, res) {
-  console.log('removeGame function')
-}
-
 module.exports = {
   index,
   show,
-  addGame,
-  removeGame
+  addGame
 }

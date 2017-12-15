@@ -29,7 +29,8 @@ class UserShow extends Component {
   render() {
     return (
       <div>
-        {this.state.discoveryList ? <p>{this.state.discoveryList[0].name}</p>
+        {this.state.discoveryList ?
+        <ul>{this.state.discoveryList.map((game, idx) => <li key={idx}>{game.name}</li>)}</ul>
         : <h2>NO DISCOVERIES</h2>}
       </div>
     );
