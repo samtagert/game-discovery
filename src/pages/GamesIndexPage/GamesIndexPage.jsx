@@ -59,7 +59,7 @@ class GamesIndexPage extends Component {
       }
     })
     .then(res => res.json())
-    .then(this.props.history.push('/'))
+    .then(this.props.updateDiscoveryList)
   }
 
   render() {

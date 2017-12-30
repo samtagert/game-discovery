@@ -13,12 +13,13 @@ import LoginPage from '../LoginPage/LoginPage';
 import UserPage from '../UserPage/UserPage';
 import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
+import tokenService from '../../utils/tokenService'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      banana: null
+      discoveryList: null
     }
   }
   
@@ -35,9 +36,25 @@ class App extends Component {
     this.setState({user: null});
   }
 
+  updateDiscoveryList() {
+    console.log('UPDATE LIST')
+    fetch('/api/users/discoverylist', {
+      headers: {
+        'Accept' : 'application/json',
+        'Content-Type' : 'application/json',
+        'Authorization': 'Bearer ' + tokenService.getToken()
+      },
+    })
+    .then(res => res.json())
+    .then(console.log(this))
+    .then(discoveryList => this.setState({discoveryList}))
+    .catch(err => console.log('err =', err))
+  }
+
   componentDidMount() {
     let user = userService.getUser();
     this.setState({user})
+    this.updateDiscoveryList();
   }
 
   render() {
@@ -63,6 +80,7 @@ class App extends Component {
                   {...props}
                   user={this.state.user}
                   handleLogout={this.handleLogout}
+                  updateDiscoveryList={() => this.updateDiscoveryList()}
                 />
               }/>
               <Route exact path='/signup' render={(props) => 
