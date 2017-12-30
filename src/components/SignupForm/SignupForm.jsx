@@ -16,7 +16,6 @@ class SignupForm extends Component {
   handleChange = (field, e) => {
     this.props.updateMessage('');
     this.setState({
-      // Using ES2015 Computed Property Names
       [field]: e.target.value
     });
   }
@@ -24,12 +23,10 @@ class SignupForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     userService.signup(this.state)
-      // successfully signed up - show GamePage
       .then(() => {
         this.props.handleSignup();
         this.props.history.push('/')
       }) 
-      // invalid user data
       .catch(err => this.props.updateMessage(err.message));
   }
 

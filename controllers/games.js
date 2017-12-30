@@ -2,17 +2,7 @@ var request = require('request')
 const igdb = require('igdb-api-node').default;
 const client = igdb(`${process.env.mashapeKey}`);
 var User = require('../models/user')
-// require user model, find by id based on req.body.user
-// then do stuff
 
-// when presenting and asked why you can't search for a specific game, it's because this is a
-// game FINDER, if you know what game you want to look at there's no reason to use this site
-
-// have the filter fields be "required" (already filled out with defaults basically)
-// defaults are date gt-1900, lt date-now, platform-eq "all (need each id)", rating-gt 0, game modes-eq 1,2, etc all filled out
-// calendar for dates, slider for rating (at bottom because it's the most diff), dropdown pre-filled checkboxes for the others
-// after initial search, the text changes to "Narrow your discovery even more?" and "Make a new discovery!" wiped out current list and brings you to original
-// Narrow your disc even more filters through the list of games you have, does not make a new fetch request
 function index(req, res) {
     client.games({
       filters: {
@@ -49,8 +39,6 @@ function show(req, res) {
     throw error
   })
 }
-
-// separate function for when you click a specific tag while on a game show page
 
 function addGame(req, res) {
   User.findOne({_id: req.body.user._id}, (err, user) => {

@@ -12,7 +12,6 @@ class UserShow extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.user)
     fetch('/api/users/discoverylist', {
       headers: {
         'Accept' : 'application/json',

@@ -1,5 +1,5 @@
 import React from 'react';
-import './GamePage.css';
+import './GamesShowPage.css';
 import GameShow from '../../components/GameShow/GameShow'
 
 const GamePage = (props) => {
