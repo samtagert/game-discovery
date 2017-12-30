@@ -32,7 +32,7 @@ function login(req, res) {
 }
 
 function profile(req, res) {
-  res.json(req.user.discoveryList)
+  User.findById(req.user._id).then(user => res.json(user.discoveryList))
 }
 
 function createJWT(user) {

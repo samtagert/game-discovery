@@ -46,11 +46,9 @@ class GamesIndexPage extends Component {
     .then(data => {this.setState({games: data})});
   }
 
-  discover = (event) => {
-    event.preventDefault();
-    console.log(event)
-    let igdbId = event.game.id
-    let name = event.game.name
+  discover = (game, id) => {
+    let igdbId = id
+    let name = game
     let user = this.props.user
     fetch('/api/games/discover', {
       method: "POST",

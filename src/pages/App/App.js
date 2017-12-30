@@ -7,7 +7,6 @@ import {
 import './App.css';
 
 import GamesIndexPage from '../GamesIndexPage/GamesIndexPage';
-import GamesShowPage from '../GamesShowPage/GamesShowPage';
 import WelcomePage from '../WelcomePage/WelcomePage';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -61,13 +60,6 @@ class App extends Component {
               }/>
               <Route exact path='/games' render={(props) =>
                 <GamesIndexPage
-                  {...props}
-                  user={this.state.user}
-                  handleLogout={this.handleLogout}
-                />
-              }/>
-              <Route exact path='/games/:id' render={(props) =>
-                <GamesShowPage
                   {...props}
                   user={this.state.user}
                   handleLogout={this.handleLogout}
