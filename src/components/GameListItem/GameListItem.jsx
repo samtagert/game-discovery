@@ -11,7 +11,7 @@ const GameListItem = (props) => {
         <Modal
 	        header={`${props.game.name}`}
 	        trigger={<Link to='#'>{props.game.name} | {Math.trunc(props.game.total_rating)}/100</Link>}>
-          <p>{props.game.summary}<p onClick={() => props.discover(props.game.name, props.game.id)}>Add to Your Discovery List</p></p>
+          <p>{props.game.summary}<div><Button onClick={() => props.discover(props.game.name, props.game.id)}>Add to Your Discovery List</Button></div></p>
         </Modal>
       </CollectionItem>
       </div>

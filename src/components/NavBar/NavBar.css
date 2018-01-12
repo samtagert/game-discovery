@@ -1,0 +1,19 @@
+.navbar-fixed { 
+  z-index: 998;
+}
+
+.hide-on-med-and-down {
+  display: block !important;
+}
+
+#nav-mobile {
+  display: none;
+}
+
+.button-collapse {
+  display: none;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
